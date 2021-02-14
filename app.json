@@ -74,6 +74,10 @@
     "BAN_STICKER": {
       "description": "Which sticker to use when banning people. Use https://telegram.dog/midukkirashmika_bot send your sticker here and reply with /stickerid to get the file_id",
       "value": "CAADBQADNwEAAjZzSxRZAc49mnFSSAI"
+    },
+    "API_WEATHER": {
+      "description": "Get this value from open weather api",
+      "value": "True"
     }
   },
   "addons": [
