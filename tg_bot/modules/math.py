@@ -71,37 +71,5 @@ To compute fractions, enter expressions as numerator(over)denominator. For examp
 
 __mod_name__ = "MATHS"
 
-SIMPLIFY_HANDLER = DisableAbleCommandHandler("simplify", simplify)
-FACTOR_HANDLER = DisableAbleCommandHandler("factor", factor)
-DERIVE_HANDLER = DisableAbleCommandHandler("derive", toss)
-INTEGRATE_HANDLER = DisableAbleCommandHandler("integrate", integrate)
-ZEROES_HANDLER = DisableAbleCommandHandler("zeroes", zeroes)
-TANGENT_HANDLER = DisableAbleCommandHandler("tangent", tangent)
-AREA_HANDLER = DisableAbleCommandHandler("area", area)
-COS_HANDLER = DisableAbleCommandHandler("cos", cos)
-SIN_HANDLER = DisableAbleCommandHandler("sin", sin)
-TAN_HANDLER = DisableAbleCommandHandler("tan", tan)
-ARCCOS_HANDLER = DisableAbleCommandHandler("arccos", arccos)
-ARCSIN_HANDLER = DisableAbleCommandHandler("arcsin", arcsin)
-ARCTAN_HANDLER = DisableAbleCommandHandler("arctan", arctan)
-ABS_HANDLER = DisableAbleCommandHandler("abs", abs)
-LOG_HANDLER = DisableAbleCommandHandler("log", log)
-
-dispatcher.add_handler(SIMPLIFY_HANDLER)
-dispatcher.add_handler(FACTOR_HANDLER)
-dispatcher.add_handler(DERIVE_HANDLER)
-dispatcher.add_handler(INTEGRATE_HANDLER)
-dispatcher.add_handler(ZEROES_HANDLER)
-dispatcher.add_handler(TANGENT_HANDLER)
-dispatcher.add_handler(AREA_HANDLER)
-dispatcher.add_handler(COS_HANDLER)
-dispatcher.add_handler(SIN_HANDLER)
-dispatcher.add_handler(TAN_HANDLER)
-dispatcher.add_handler(ARCCOS_HANDLER)
-dispatcher.add_handler(ARCSIN_HANDLER)
-dispatcher.add_handler(ARCTAN_HANDLER)
-dispatcher.add_handler(ABS_HANDLER)
-dispatcher.add_handler(LOG_HANDLER)
-
 if __name__ == '_main_':
     unittest.main()
