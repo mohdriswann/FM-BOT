@@ -1,9 +1,9 @@
 # tgbot
-An exclusive bot made for MOVIES FACTORY Group
+An exclusive bot made for FOCUS MOVIES Group
 
 ## You can also tap the Deploy To Heroku button below to deploy straight to Heroku!
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ALENTL/FM-BOT)
 
 ## Starting the bot.
 
