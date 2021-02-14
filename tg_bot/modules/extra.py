@@ -259,30 +259,6 @@ def table(bot: Bot, update: Update):
                 update.message.reply_text("Send money bsdk to buy new table to flip")
             else:
                 update.message.reply_text("Go do some work instead of flippin tables you helpless fagit.")
-
-@run_async
-def getstickerid(bot: Bot, update: Update):
-    msg = update.effective_message
-    if msg.reply_to_message and msg.reply_to_message.sticker:
-        update.effective_message.reply_text("Sticker ID:\n```" +
-                                            escape_markdown(msg.reply_to_message.sticker.file_id) + "```",
-                                            parse_mode=ParseMode.MARKDOWN)
-    else:
-        update.effective_message.reply_text("Please reply to a sticker to get its ID.")
-
-
-@run_async
-def getthesticker(bot: Bot, update: Update):
-    msg = update.effective_message
-    chat_id = update.effective_chat.id
-    if msg.reply_to_message and msg.reply_to_message.sticker:
-        file_id = msg.reply_to_message.sticker.file_id
-        newFile = bot.get_file(file_id)
-        newFile.download('sticker.png')
-        bot.sendDocument(chat_id, document=open('sticker.png', 'rb'))
-        os.remove('sticker.png')
-    else:
-        update.effective_message.reply_text("Please reply to a sticker for me to upload its PNG.")
 			
 __help__ = """
  - /shrug : get shrug XD.
@@ -295,8 +271,6 @@ __help__ = """
  - /roll : Roll a dice.
  - /rlg : Join ears,nose,mouth and create an emo ;-;
  - /zal <any text> : zalgofy! your text
- - /getstickerid: reply to a sticker to me to tell you its file ID.
- - /getthesticker: reply to a sticker to me to upload its raw PNG file.
  Lyrics Plugin will take some moar time to come up.
 """
 
@@ -310,8 +284,6 @@ BLUETEXT_HANDLER = DisableAbleCommandHandler("bluetext", bluetext)
 RLG_HANDLER = DisableAbleCommandHandler("rlg", rlg)
 DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
-STICKERID_HANDLER = DisableAbleCommandHandler("stickerid", stickerid)
-GETSTICKER_HANDLER = DisableAbleCommandHandler("getsticker", getsticker)
 
 dispatcher.add_handler(ABUSE_HANDLER)
 dispatcher.add_handler(ROLL_HANDLER)
@@ -321,5 +293,3 @@ dispatcher.add_handler(BLUETEXT_HANDLER)
 dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
-dispatcher.add_handler(STICKERID_HANDLER)
-dispatcher.add_handler(GETSTICKER_HANDLER)
