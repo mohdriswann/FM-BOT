@@ -1,6 +1,6 @@
 
 {
-  "name": "FOCUSMOVIES-BOT",
+  "name": "FM-BOT",
   "description": "A bot exclusively made for movies factory group.....",
   "keywords": [
     "bot",
@@ -9,7 +9,7 @@
     "movies",
     "factory"
   ],
-  "repository": "https://github.com/ALENTL/FOCUSMOVIES-BOT",
+  "repository": "https://github.com/ALENTL/FM-BOT",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable env variables",
@@ -53,7 +53,7 @@
     },
     "DONATION_LINK": {
       "description": "Optional: link where you would like to receive donations.",
-      "value": "https://www.t.me/Your_id_here"
+      "value": "https://paypal.me/ALENTL"
     },
     "PORT": {
       "description": "Port to use for your webhooks",
