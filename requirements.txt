@@ -20,3 +20,4 @@ numpy
 googletrans
 pillow
 uuid==1.30
+telegraph
