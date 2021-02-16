@@ -10,6 +10,7 @@
     "factory"
   ],
   "repository": "https://github.com/ALENTL/FM-BOT",
+  "logo": "https://telegra.ph/file/274b1b194bfec32d531c1.jpg",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable env variables",
