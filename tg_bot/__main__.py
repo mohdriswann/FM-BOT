@@ -18,7 +18,12 @@ from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
-No one gonna help you here 🤣🤣🤣🤣........
+Hi {}, my name is {}! I am a Simple bot for Filters in Goups and maintained by  @X_avieo 😎.
+
+Sorry...!!
+You can't Add me in your group..😬
+
+©𝐒𝐚𝐯𝐢𝐞𝐨 𝐁𝐢𝐧𝐮
 """
 
 HELP_STRINGS = """
