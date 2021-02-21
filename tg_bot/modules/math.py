@@ -1,75 +1,169 @@
-import os
-import sys
-import unittest
+import math
 
-sys.path.insert(0, os.getcwd())
+import pynewtonmath as newton
+from SaitamaRobot import dispatcher
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler
+from telegram import Update
+from telegram.ext import CallbackContext, run_async
 
-from pynewtonmath import core, wrapper
+
+@run_async
+def simplify(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(newton.simplify('{}'.format(args[0])))
 
 
-class TestWrapper (unittest.TestCase):
-    def test_expose_endpoints (self):
-        for op in core.ENDPOINTS:
-            self.assertTrue(op in dir(wrapper))
-            print('.', end='', flush=True)
-    
-    
-    def test_endpoints (self):
-        # operation: (expression, result)
-        tests = {
-            'simplify': ('x^2 + 2x', 'x^2 + 2 x'),
-            'factor': ('x^2 + 2x', 'x (x + 2)'),
-            'derive': ('x^2+2x', '2 x + 2'),
-            'integrate': ('x^2+2x', '1/3 x^3 + x^2'), # + C missing
-            'zeroes': ('x^2+2x', [-2, 0]),
-            'tangent': ('2|x^3', '12 x + -16'),
-            'area': ('2:4|x^3', 60),
-            'cos': ('pi', -1),
-            'sin': ('0', 0),
-            'tan': ('0', 0),
-            'arccos': ('1', 0),
-            'arcsin': ('0', 0),
-            'arctan': ('0', 0),
-            'abs': ('-1', 1),
-            'log': ('2|8', 3),
-        }
-        
-        for op, test in tests.items():
-            exp, result = test
-            self.assertEqual(getattr(wrapper, op)(exp), result)
-            print('.', end='', flush=True)
-    
-    
-    def test_extended_endpoints (self):
-        self.assertEqual(wrapper.tangent('x^3', 2), '12 x + -16')
-        self.assertEqual(wrapper.area('x^3', 2, 4), 60)
-        self.assertEqual(wrapper.log(8, 2), 3)
+@run_async
+def factor(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(newton.factor('{}'.format(args[0])))
+
+
+@run_async
+def derive(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(newton.derive('{}'.format(args[0])))
+
+
+@run_async
+def integrate(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(newton.integrate('{}'.format(args[0])))
+
+
+@run_async
+def zeroes(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(newton.zeroes('{}'.format(args[0])))
+
+
+@run_async
+def tangent(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(newton.tangent('{}'.format(args[0])))
+
+
+@run_async
+def area(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(newton.area('{}'.format(args[0])))
+
+
+@run_async
+def cos(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(math.cos(int(args[0])))
+
+
+@run_async
+def sin(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(math.sin(int(args[0])))
+
+
+@run_async
+def tan(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(math.tan(int(args[0])))
+
+
+@run_async
+def arccos(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(math.acos(int(args[0])))
+
+
+@run_async
+def arcsin(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(math.asin(int(args[0])))
+
+
+@run_async
+def arctan(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(math.atan(int(args[0])))
+
+
+@run_async
+def abs(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(math.fabs(int(args[0])))
+
+
+@run_async
+def log(update: Update, context: CallbackContext):
+    args = context.args
+    message = update.effective_message
+    message.reply_text(math.log(int(args[0])))
+
 
 __help__ = """
- Here is the help for the Math module:
-
 Solves complex math problems using https://newton.now.sh
- - /simplify: Simplify /simplify 2^2+2(2)
- - /factor: Factor /factor x^2 + 2x
- - /derive: Derive /derive x^2+2x
- - /integrate: Integrate /integrate x^2+2x
- - /zeroes: Find 0's /zeroes x^2+2x
- - /tangent: Find Tangent /tangent 2lx^3
- - /area: Area Under Curve /area 2:4lx^3
- - /cos: Cosine /cos pi
- - /sin: Sine /sin 0
- - /tan: Tangent /tan 0
- - /arccos: Inverse Cosine /arccos 1
- - /arcsin: Inverse Sine /arcsin 0
- - /arctan: Inverse Tangent /arctan 0
- - /abs: Absolute Value /abs -1
- - /log: Logarithm /log 2l8
-Keep in mind: To find the tangent line of a function at a certain x value, send the request as c|f(x) where c is the given x value and f(x) is the function expression, the separator is a vertical bar '|'. See the table above for an example request.
+ • `/math`*:* Math `/math 2^2+2(2)`
+ • `/factor`*:* Factor `/factor x^2 + 2x`
+ • `/derive`*:* Derive `/derive x^2+2x`
+ • `/integrate`*:* Integrate `/integrate x^2+2x`
+ • `/zeroes`*:* Find 0's `/zeroes x^2+2x`
+ • `/tangent`*:* Find Tangent `/tangent 2lx^3`
+ • `/area`*:* Area Under Curve `/area 2:4lx^3`
+ • `/cos`*:* Cosine `/cos pi`
+ • `/sin`*:* Sine `/sin 0`
+ • `/tan`*:* Tangent `/tan 0`
+ • `/arccos`*:* Inverse Cosine `/arccos 1`
+ • `/arcsin`*:* Inverse Sine `/arcsin 0`
+ • `/arctan`*:* Inverse Tangent `/arctan 0`
+ • `/abs`*:* Absolute Value `/abs -1`
+ • `/log`*:* Logarithm `/log 2l8`
+_Keep in mind_: To find the tangent line of a function at a certain x value, send the request as c|f(x) where c is the given x value and f(x) is the function expression, the separator is a vertical bar '|'. See the table above for an example request.
 To find the area under a function, send the request as c:d|f(x) where c is the starting x value, d is the ending x value, and f(x) is the function under which you want the curve between the two x values.
 To compute fractions, enter expressions as numerator(over)denominator. For example, to process 2/4 you must send in your expression as 2(over)4. The result expression will be in standard math notation (1/2, 3/4).
 """
 
-__mod_name__ = "MATHS"
+__mod_name__ = "Math"
 
-if __name__ == '_main_':
-    unittest.main()
+SIMPLIFY_HANDLER = DisableAbleCommandHandler("math", simplify)
+FACTOR_HANDLER = DisableAbleCommandHandler("factor", factor)
+DERIVE_HANDLER = DisableAbleCommandHandler("derive", derive)
+INTEGRATE_HANDLER = DisableAbleCommandHandler("integrate", integrate)
+ZEROES_HANDLER = DisableAbleCommandHandler("zeroes", zeroes)
+TANGENT_HANDLER = DisableAbleCommandHandler("tangent", tangent)
+AREA_HANDLER = DisableAbleCommandHandler("area", area)
+COS_HANDLER = DisableAbleCommandHandler("cos", cos)
+SIN_HANDLER = DisableAbleCommandHandler("sin", sin)
+TAN_HANDLER = DisableAbleCommandHandler("tan", tan)
+ARCCOS_HANDLER = DisableAbleCommandHandler("arccos", arccos)
+ARCSIN_HANDLER = DisableAbleCommandHandler("arcsin", arcsin)
+ARCTAN_HANDLER = DisableAbleCommandHandler("arctan", arctan)
+ABS_HANDLER = DisableAbleCommandHandler("abs", abs)
+LOG_HANDLER = DisableAbleCommandHandler("log", log)
+
+dispatcher.add_handler(SIMPLIFY_HANDLER)
+dispatcher.add_handler(FACTOR_HANDLER)
+dispatcher.add_handler(DERIVE_HANDLER)
+dispatcher.add_handler(INTEGRATE_HANDLER)
+dispatcher.add_handler(ZEROES_HANDLER)
+dispatcher.add_handler(TANGENT_HANDLER)
+dispatcher.add_handler(AREA_HANDLER)
+dispatcher.add_handler(COS_HANDLER)
+dispatcher.add_handler(SIN_HANDLER)
+dispatcher.add_handler(TAN_HANDLER)
+dispatcher.add_handler(ARCCOS_HANDLER)
+dispatcher.add_handler(ARCSIN_HANDLER)
+dispatcher.add_handler(ARCTAN_HANDLER)
+dispatcher.add_handler(ABS_HANDLER)
+dispatcher.add_handler(LOG_HANDLER)
