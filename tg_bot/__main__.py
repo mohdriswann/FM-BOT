@@ -18,12 +18,8 @@ from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
-Hi {}, my name is {}! I am a Simple bot for Filters in Goups and maintained by  @X_avieo 😎.
-
-Sorry...!!
-You can't Add me in your group..😬
-
-©𝐒𝐚𝐯𝐢𝐞𝐨 𝐁𝐢𝐧𝐮
+This Bot is exclusively made for Film Junction Group .....
+You can't add me to your Group🤣 .....
 """
 
 HELP_STRINGS = """
@@ -137,7 +133,7 @@ def start(bot: Bot, update: Update, args: List[str]):
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
 
                 parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="👥Group👥", url="https://t.me/focusmoviess"), InlineKeyboardButton(text="🔔Channel🔔", url="https://t.me/focusgrpchannel")]]))
+                    [[InlineKeyboardButton(text="👥Group👥", url="https://t.me/FJ_Chat"), InlineKeyboardButton(text="🔔Channel🔔", url="https://t.me/joinchat/ROzD9Y6z4Yxfl2kt")]]))
 
     else:
         update.effective_message.reply_text("ഹായ് മച്ചാൻ,  എന്താണ്??")
